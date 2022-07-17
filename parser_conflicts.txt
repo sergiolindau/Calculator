@@ -1,0 +1,253 @@
+Conflict in grammar: multiple actions possible when lookahead token is END_OF_INPUT in state 0
+- reduce by rule: opt_sep_no_nl -> 
+- shift token (then go to state 2)
+Conflict in grammar: multiple actions possible when lookahead token is ( in state 26
+- reduce by rule: simple_expr -> oper_expr
+- shift token (then go to state 94)
+Conflict in grammar: multiple actions possible when lookahead token is ++ in state 26
+- reduce by rule: simple_expr -> oper_expr
+- shift token (then go to state 92)
+Conflict in grammar: multiple actions possible when lookahead token is -- in state 26
+- reduce by rule: simple_expr -> oper_expr
+- shift token (then go to state 93)
+Conflict in grammar: multiple actions possible when lookahead token is + in state 26
+- reduce by rule: simple_expr -> oper_expr
+- shift token (then go to state 101)
+Conflict in grammar: multiple actions possible when lookahead token is - in state 26
+- reduce by rule: simple_expr -> oper_expr
+- shift token (then go to state 103)
+Conflict in grammar: multiple actions possible when lookahead token is ] in state 56
+- reduce by rule: matrix_row -> 
+- shift token (then go to state 132)
+
+States with conflicts:
+State 0
+  $accept -> .input $end #lookaheads= $end
+  input -> .END_OF_INPUT #lookaheads= $end
+  input -> .simple_list END_OF_INPUT #lookaheads= $end
+  input -> .parse_error #lookaheads= $end
+  simple_list -> .opt_sep_no_nl #lookaheads= END_OF_INPUT
+  simple_list -> .simple_list1 opt_sep_no_nl #lookaheads= END_OF_INPUT
+  parse_error -> .INVALID #lookaheads= $end
+  parse_error -> .error #lookaheads= $end
+  opt_sep_no_nl -> . #lookaheads= END_OF_INPUT
+  opt_sep_no_nl -> .sep_no_nl #lookaheads= END_OF_INPUT
+  simple_list1 -> .statement #lookaheads= END_OF_INPUT , ;
+  simple_list1 -> .simple_list1 sep_no_nl statement #lookaheads= END_OF_INPUT , ;
+  sep_no_nl -> ., #lookaheads= END_OF_INPUT , ; NAME NUMBER STRING [ ( ++ -- ! ~ + - GLOBAL PERSISTENT IF SWITCH WHILE DO FOR PARFOR BREAK CONTINUE RETURN UNWIND TRY function file
+  sep_no_nl -> .; #lookaheads= END_OF_INPUT , ; NAME NUMBER STRING [ ( ++ -- ! ~ + - GLOBAL PERSISTENT IF SWITCH WHILE DO FOR PARFOR BREAK CONTINUE RETURN UNWIND TRY function file
+  sep_no_nl -> .sep_no_nl , #lookaheads= END_OF_INPUT , ; NAME NUMBER STRING [ ( ++ -- ! ~ + - GLOBAL PERSISTENT IF SWITCH WHILE DO FOR PARFOR BREAK CONTINUE RETURN UNWIND TRY function file
+  sep_no_nl -> .sep_no_nl ; #lookaheads= END_OF_INPUT , ; NAME NUMBER STRING [ ( ++ -- ! ~ + - GLOBAL PERSISTENT IF SWITCH WHILE DO FOR PARFOR BREAK CONTINUE RETURN UNWIND TRY function file
+  statement -> .expression #lookaheads= ; , END_OF_INPUT \n UNTIL CLEANUP END CATCH ELSE ELSEIF CASE OTHERWISE
+  statement -> .command #lookaheads= ; , END_OF_INPUT \n UNTIL CLEANUP END CATCH ELSE ELSEIF CASE OTHERWISE
+  statement -> .word_list_cmd #lookaheads= ; , END_OF_INPUT \n UNTIL CLEANUP END CATCH ELSE ELSEIF CASE OTHERWISE
+  expression -> .simple_expr #lookaheads= END_OF_INPUT , ; ) ] END NAME NUMBER STRING [ ( ++ -- ! ~ + - GLOBAL PERSISTENT IF SWITCH WHILE DO FOR PARFOR BREAK CONTINUE RETURN UNWIND TRY function file \n ELSE OTHERWISE CASE UNTIL CLEANUP CATCH ELSEIF
+  expression -> .assign_expr #lookaheads= END_OF_INPUT , ; ) ] END NAME NUMBER STRING [ ( ++ -- ! ~ + - GLOBAL PERSISTENT IF SWITCH WHILE DO FOR PARFOR BREAK CONTINUE RETURN UNWIND TRY function file \n ELSE OTHERWISE CASE UNTIL CLEANUP CATCH ELSEIF
+  command -> .declaration #lookaheads= END_OF_INPUT , ; UNTIL \n CLEANUP CATCH END OTHERWISE CASE ELSEIF ELSE
+  command -> .select_command #lookaheads= END_OF_INPUT , ; UNTIL \n CLEANUP CATCH END OTHERWISE CASE ELSEIF ELSE
+  command -> .loop_command #lookaheads= END_OF_INPUT , ; UNTIL \n CLEANUP CATCH END OTHERWISE CASE ELSEIF ELSE
+  command -> .jump_command #lookaheads= END_OF_INPUT , ; UNTIL \n CLEANUP CATCH END OTHERWISE CASE ELSEIF ELSE
+  command -> .except_command #lookaheads= END_OF_INPUT , ; UNTIL \n CLEANUP CATCH END OTHERWISE CASE ELSEIF ELSE
+  command -> .function #lookaheads= END_OF_INPUT , ; UNTIL \n CLEANUP CATCH END OTHERWISE CASE ELSEIF ELSE
+  command -> .file #lookaheads= END_OF_INPUT , ; UNTIL \n CLEANUP CATCH END OTHERWISE CASE ELSEIF ELSE
+  word_list_cmd -> .identifier word_list #lookaheads= END_OF_INPUT , ; UNTIL \n CLEANUP CATCH END OTHERWISE CASE ELSEIF ELSE
+  simple_expr -> .oper_expr #lookaheads= ; , END_OF_INPUT < <= == >= > != ~= & | && || = += -= *= /= \\= ^= **= .*= ./= .\\= .^= .**= &= |= ) ] END NAME NUMBER STRING [ ( ++ -- ! ~ + - GLOBAL PERSISTENT IF SWITCH WHILE DO FOR PARFOR BREAK CONTINUE RETURN UNWIND TRY function file \n ELSE OTHERWISE CASE UNTIL CLEANUP CATCH ELSEIF
+  simple_expr -> .colon_expr #lookaheads= ; , END_OF_INPUT < <= == >= > != ~= & | && || = += -= *= /= \\= ^= **= .*= ./= .\\= .^= .**= &= |= ) ] END NAME NUMBER STRING [ ( ++ -- ! ~ + - GLOBAL PERSISTENT IF SWITCH WHILE DO FOR PARFOR BREAK CONTINUE RETURN UNWIND TRY function file \n ELSE OTHERWISE CASE UNTIL CLEANUP CATCH ELSEIF
+  simple_expr -> .simple_expr < simple_expr #lookaheads= ; , END_OF_INPUT < <= == >= > != ~= & | && || = += -= *= /= \\= ^= **= .*= ./= .\\= .^= .**= &= |= ) ] END NAME NUMBER STRING [ ( ++ -- ! ~ + - GLOBAL PERSISTENT IF SWITCH WHILE DO FOR PARFOR BREAK CONTINUE RETURN UNWIND TRY function file \n ELSE OTHERWISE CASE UNTIL CLEANUP CATCH ELSEIF
+  simple_expr -> .simple_expr <= simple_expr #lookaheads= ; , END_OF_INPUT < <= == >= > != ~= & | && || = += -= *= /= \\= ^= **= .*= ./= .\\= .^= .**= &= |= ) ] END NAME NUMBER STRING [ ( ++ -- ! ~ + - GLOBAL PERSISTENT IF SWITCH WHILE DO FOR PARFOR BREAK CONTINUE RETURN UNWIND TRY function file \n ELSE OTHERWISE CASE UNTIL CLEANUP CATCH ELSEIF
+  simple_expr -> .simple_expr == simple_expr #lookaheads= ; , END_OF_INPUT < <= == >= > != ~= & | && || = += -= *= /= \\= ^= **= .*= ./= .\\= .^= .**= &= |= ) ] END NAME NUMBER STRING [ ( ++ -- ! ~ + - GLOBAL PERSISTENT IF SWITCH WHILE DO FOR PARFOR BREAK CONTINUE RETURN UNWIND TRY function file \n ELSE OTHERWISE CASE UNTIL CLEANUP CATCH ELSEIF
+  simple_expr -> .simple_expr >= simple_expr #lookaheads= ; , END_OF_INPUT < <= == >= > != ~= & | && || = += -= *= /= \\= ^= **= .*= ./= .\\= .^= .**= &= |= ) ] END NAME NUMBER STRING [ ( ++ -- ! ~ + - GLOBAL PERSISTENT IF SWITCH WHILE DO FOR PARFOR BREAK CONTINUE RETURN UNWIND TRY function file \n ELSE OTHERWISE CASE UNTIL CLEANUP CATCH ELSEIF
+  simple_expr -> .simple_expr > simple_expr #lookaheads= ; , END_OF_INPUT < <= == >= > != ~= & | && || = += -= *= /= \\= ^= **= .*= ./= .\\= .^= .**= &= |= ) ] END NAME NUMBER STRING [ ( ++ -- ! ~ + - GLOBAL PERSISTENT IF SWITCH WHILE DO FOR PARFOR BREAK CONTINUE RETURN UNWIND TRY function file \n ELSE OTHERWISE CASE UNTIL CLEANUP CATCH ELSEIF
+  simple_expr -> .simple_expr != simple_expr #lookaheads= ; , END_OF_INPUT < <= == >= > != ~= & | && || = += -= *= /= \\= ^= **= .*= ./= .\\= .^= .**= &= |= ) ] END NAME NUMBER STRING [ ( ++ -- ! ~ + - GLOBAL PERSISTENT IF SWITCH WHILE DO FOR PARFOR BREAK CONTINUE RETURN UNWIND TRY function file \n ELSE OTHERWISE CASE UNTIL CLEANUP CATCH ELSEIF
+  simple_expr -> .simple_expr ~= simple_expr #lookaheads= ; , END_OF_INPUT < <= == >= > != ~= & | && || = += -= *= /= \\= ^= **= .*= ./= .\\= .^= .**= &= |= ) ] END NAME NUMBER STRING [ ( ++ -- ! ~ + - GLOBAL PERSISTENT IF SWITCH WHILE DO FOR PARFOR BREAK CONTINUE RETURN UNWIND TRY function file \n ELSE OTHERWISE CASE UNTIL CLEANUP CATCH ELSEIF
+  simple_expr -> .simple_expr & simple_expr #lookaheads= ; , END_OF_INPUT < <= == >= > != ~= & | && || = += -= *= /= \\= ^= **= .*= ./= .\\= .^= .**= &= |= ) ] END NAME NUMBER STRING [ ( ++ -- ! ~ + - GLOBAL PERSISTENT IF SWITCH WHILE DO FOR PARFOR BREAK CONTINUE RETURN UNWIND TRY function file \n ELSE OTHERWISE CASE UNTIL CLEANUP CATCH ELSEIF
+  simple_expr -> .simple_expr | simple_expr #lookaheads= ; , END_OF_INPUT < <= == >= > != ~= & | && || = += -= *= /= \\= ^= **= .*= ./= .\\= .^= .**= &= |= ) ] END NAME NUMBER STRING [ ( ++ -- ! ~ + - GLOBAL PERSISTENT IF SWITCH WHILE DO FOR PARFOR BREAK CONTINUE RETURN UNWIND TRY function file \n ELSE OTHERWISE CASE UNTIL CLEANUP CATCH ELSEIF
+  simple_expr -> .simple_expr && simple_expr #lookaheads= ; , END_OF_INPUT < <= == >= > != ~= & | && || = += -= *= /= \\= ^= **= .*= ./= .\\= .^= .**= &= |= ) ] END NAME NUMBER STRING [ ( ++ -- ! ~ + - GLOBAL PERSISTENT IF SWITCH WHILE DO FOR PARFOR BREAK CONTINUE RETURN UNWIND TRY function file \n ELSE OTHERWISE CASE UNTIL CLEANUP CATCH ELSEIF
+  simple_expr -> .simple_expr || simple_expr #lookaheads= ; , END_OF_INPUT < <= == >= > != ~= & | && || = += -= *= /= \\= ^= **= .*= ./= .\\= .^= .**= &= |= ) ] END NAME NUMBER STRING [ ( ++ -- ! ~ + - GLOBAL PERSISTENT IF SWITCH WHILE DO FOR PARFOR BREAK CONTINUE RETURN UNWIND TRY function file \n ELSE OTHERWISE CASE UNTIL CLEANUP CATCH ELSEIF
+  assign_expr -> .simple_expr = expression #lookaheads= ; , END_OF_INPUT ) ] END CASE \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL - + ~ ! -- ++ ( [ STRING NUMBER NAME OTHERWISE ELSEIF CATCH CLEANUP UNTIL ELSE
+  assign_expr -> .simple_expr += expression #lookaheads= ; , END_OF_INPUT ) ] END CASE \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL - + ~ ! -- ++ ( [ STRING NUMBER NAME OTHERWISE ELSEIF CATCH CLEANUP UNTIL ELSE
+  assign_expr -> .simple_expr -= expression #lookaheads= ; , END_OF_INPUT ) ] END CASE \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL - + ~ ! -- ++ ( [ STRING NUMBER NAME OTHERWISE ELSEIF CATCH CLEANUP UNTIL ELSE
+  assign_expr -> .simple_expr *= expression #lookaheads= ; , END_OF_INPUT ) ] END CASE \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL - + ~ ! -- ++ ( [ STRING NUMBER NAME OTHERWISE ELSEIF CATCH CLEANUP UNTIL ELSE
+  assign_expr -> .simple_expr /= expression #lookaheads= ; , END_OF_INPUT ) ] END CASE \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL - + ~ ! -- ++ ( [ STRING NUMBER NAME OTHERWISE ELSEIF CATCH CLEANUP UNTIL ELSE
+  assign_expr -> .simple_expr \\= expression #lookaheads= ; , END_OF_INPUT ) ] END CASE \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL - + ~ ! -- ++ ( [ STRING NUMBER NAME OTHERWISE ELSEIF CATCH CLEANUP UNTIL ELSE
+  assign_expr -> .simple_expr ^= expression #lookaheads= ; , END_OF_INPUT ) ] END CASE \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL - + ~ ! -- ++ ( [ STRING NUMBER NAME OTHERWISE ELSEIF CATCH CLEANUP UNTIL ELSE
+  assign_expr -> .simple_expr **= expression #lookaheads= ; , END_OF_INPUT ) ] END CASE \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL - + ~ ! -- ++ ( [ STRING NUMBER NAME OTHERWISE ELSEIF CATCH CLEANUP UNTIL ELSE
+  assign_expr -> .simple_expr .*= expression #lookaheads= ; , END_OF_INPUT ) ] END CASE \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL - + ~ ! -- ++ ( [ STRING NUMBER NAME OTHERWISE ELSEIF CATCH CLEANUP UNTIL ELSE
+  assign_expr -> .simple_expr ./= expression #lookaheads= ; , END_OF_INPUT ) ] END CASE \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL - + ~ ! -- ++ ( [ STRING NUMBER NAME OTHERWISE ELSEIF CATCH CLEANUP UNTIL ELSE
+  assign_expr -> .simple_expr .\\= expression #lookaheads= ; , END_OF_INPUT ) ] END CASE \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL - + ~ ! -- ++ ( [ STRING NUMBER NAME OTHERWISE ELSEIF CATCH CLEANUP UNTIL ELSE
+  assign_expr -> .simple_expr .^= expression #lookaheads= ; , END_OF_INPUT ) ] END CASE \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL - + ~ ! -- ++ ( [ STRING NUMBER NAME OTHERWISE ELSEIF CATCH CLEANUP UNTIL ELSE
+  assign_expr -> .simple_expr .**= expression #lookaheads= ; , END_OF_INPUT ) ] END CASE \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL - + ~ ! -- ++ ( [ STRING NUMBER NAME OTHERWISE ELSEIF CATCH CLEANUP UNTIL ELSE
+  assign_expr -> .simple_expr &= expression #lookaheads= ; , END_OF_INPUT ) ] END CASE \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL - + ~ ! -- ++ ( [ STRING NUMBER NAME OTHERWISE ELSEIF CATCH CLEANUP UNTIL ELSE
+  assign_expr -> .simple_expr |= expression #lookaheads= ; , END_OF_INPUT ) ] END CASE \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL - + ~ ! -- ++ ( [ STRING NUMBER NAME OTHERWISE ELSEIF CATCH CLEANUP UNTIL ELSE
+  declaration -> .GLOBAL decl_init_list #lookaheads= ; , END_OF_INPUT \n UNTIL CLEANUP END CATCH ELSE ELSEIF CASE OTHERWISE
+  declaration -> .PERSISTENT decl_init_list #lookaheads= ; , END_OF_INPUT \n UNTIL CLEANUP END CATCH ELSE ELSEIF CASE OTHERWISE
+  select_command -> .if_command #lookaheads= ; , END_OF_INPUT \n UNTIL CLEANUP END CATCH ELSE ELSEIF CASE OTHERWISE
+  select_command -> .switch_command #lookaheads= ; , END_OF_INPUT \n UNTIL CLEANUP END CATCH ELSE ELSEIF CASE OTHERWISE
+  loop_command -> .WHILE stash_comment expression stmt_begin opt_sep opt_list END #lookaheads= ; , END_OF_INPUT \n UNTIL CLEANUP END CATCH ELSE ELSEIF CASE OTHERWISE
+  loop_command -> .DO stash_comment opt_sep opt_list UNTIL expression #lookaheads= ; , END_OF_INPUT \n UNTIL CLEANUP END CATCH ELSE ELSEIF CASE OTHERWISE
+  loop_command -> .FOR stash_comment assign_lhs = expression stmt_begin opt_sep opt_list END #lookaheads= ; , END_OF_INPUT \n UNTIL CLEANUP END CATCH ELSE ELSEIF CASE OTHERWISE
+  loop_command -> .FOR stash_comment ( assign_lhs = expression ) opt_sep opt_list END #lookaheads= ; , END_OF_INPUT \n UNTIL CLEANUP END CATCH ELSE ELSEIF CASE OTHERWISE
+  loop_command -> .PARFOR stash_comment assign_lhs = expression stmt_begin opt_sep opt_list END #lookaheads= ; , END_OF_INPUT \n UNTIL CLEANUP END CATCH ELSE ELSEIF CASE OTHERWISE
+  loop_command -> .PARFOR stash_comment ( assign_lhs = expression , expression ) opt_sep opt_list END #lookaheads= ; , END_OF_INPUT \n UNTIL CLEANUP END CATCH ELSE ELSEIF CASE OTHERWISE
+  jump_command -> .BREAK #lookaheads= ; , END_OF_INPUT \n UNTIL CLEANUP END CATCH ELSE ELSEIF CASE OTHERWISE
+  jump_command -> .CONTINUE #lookaheads= ; , END_OF_INPUT \n UNTIL CLEANUP END CATCH ELSE ELSEIF CASE OTHERWISE
+  jump_command -> .RETURN #lookaheads= ; , END_OF_INPUT \n UNTIL CLEANUP END CATCH ELSE ELSEIF CASE OTHERWISE
+  except_command -> .UNWIND stash_comment opt_sep opt_list CLEANUP stash_comment opt_sep opt_list END #lookaheads= ; , END_OF_INPUT \n UNTIL CLEANUP END CATCH ELSE ELSEIF CASE OTHERWISE
+  except_command -> .TRY stash_comment opt_sep opt_list CATCH stash_comment opt_sep opt_list END #lookaheads= ; , END_OF_INPUT \n UNTIL CLEANUP END CATCH ELSE ELSEIF CASE OTHERWISE
+  except_command -> .TRY stash_comment opt_sep opt_list END #lookaheads= ; , END_OF_INPUT \n UNTIL CLEANUP END CATCH ELSE ELSEIF CASE OTHERWISE
+  identifier -> .NAME #lookaheads= STRING END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < NAME UNTIL \n CLEANUP CATCH END ELSE ELSEIF OTHERWISE CASE ) ] file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ NUMBER
+  oper_expr -> .primary_expr #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> .oper_expr ++ #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> .oper_expr -- #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> .oper_expr ( ) #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> .oper_expr ( arg_list ) #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> .oper_expr ' #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> .oper_expr .' #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> .++ oper_expr #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> .-- oper_expr #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> .! oper_expr #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> .~ oper_expr #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> .+ oper_expr #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> .- oper_expr #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> .oper_expr ^ power_expr #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> .oper_expr ** power_expr #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> .oper_expr .^ power_expr #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> .oper_expr .** power_expr #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> .oper_expr + oper_expr #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> .oper_expr .+ oper_expr #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> .oper_expr - oper_expr #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> .oper_expr .- oper_expr #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> .oper_expr * oper_expr #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> .oper_expr .* oper_expr #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> .oper_expr / oper_expr #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> .oper_expr ./ oper_expr #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> .oper_expr \\ oper_expr #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> .oper_expr .\\ oper_expr #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  colon_expr -> .oper_expr : oper_expr #lookaheads= END_OF_INPUT , ; |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] END CASE \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL - + ~ ! -- ++ ( [ STRING NUMBER NAME OTHERWISE ELSEIF CATCH CLEANUP UNTIL ELSE
+  colon_expr -> .oper_expr : oper_expr : oper_expr #lookaheads= END_OF_INPUT , ; |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] END CASE \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL - + ~ ! -- ++ ( [ STRING NUMBER NAME OTHERWISE ELSEIF CATCH CLEANUP UNTIL ELSE
+  if_command -> .IF stash_comment if_cmd_list END #lookaheads= END_OF_INPUT , ; UNTIL \n CLEANUP CATCH END OTHERWISE CASE ELSEIF ELSE
+  switch_command -> .SWITCH stash_comment expression opt_sep case_list END #lookaheads= END_OF_INPUT , ; UNTIL \n CLEANUP CATCH END OTHERWISE CASE ELSEIF ELSE
+  primary_expr -> .identifier #lookaheads= ; , END_OF_INPUT < <= == >= > != ~= & | && || = += -= *= /= \\= ^= **= .*= ./= .\\= .^= .**= &= |= : .\\ \\ ./ / .* * .- - .+ + .** .^ ** ^ .' ' ( -- ++ \n UNTIL CLEANUP END CATCH ELSE ELSEIF CASE OTHERWISE
+  primary_expr -> .constant #lookaheads= ; , END_OF_INPUT < <= == >= > != ~= & | && || = += -= *= /= \\= ^= **= .*= ./= .\\= .^= .**= &= |= : .\\ \\ ./ / .* * .- - .+ + .** .^ ** ^ .' ' ( -- ++ END OTHERWISE NAME NUMBER STRING [ ! ~ GLOBAL PERSISTENT IF SWITCH WHILE DO FOR PARFOR BREAK CONTINUE RETURN UNWIND TRY function file \n CASE ) ELSEIF CATCH CLEANUP UNTIL ELSE ]
+  primary_expr -> .matrix #lookaheads= ; , END_OF_INPUT < <= == >= > != ~= & | && || = += -= *= /= \\= ^= **= .*= ./= .\\= .^= .**= &= |= : .\\ \\ ./ / .* * .- - .+ + .** .^ ** ^ .' ' ( -- ++ END OTHERWISE NAME NUMBER STRING [ ! ~ GLOBAL PERSISTENT IF SWITCH WHILE DO FOR PARFOR BREAK CONTINUE RETURN UNWIND TRY function file \n CASE ) ELSEIF CATCH CLEANUP UNTIL ELSE ]
+  primary_expr -> .( expression ) #lookaheads= ; , END_OF_INPUT < <= == >= > != ~= & | && || = += -= *= /= \\= ^= **= .*= ./= .\\= .^= .**= &= |= : .\\ \\ ./ / .* * .- - .+ + .** .^ ** ^ .' ' ( -- ++ END OTHERWISE NAME NUMBER STRING [ ! ~ GLOBAL PERSISTENT IF SWITCH WHILE DO FOR PARFOR BREAK CONTINUE RETURN UNWIND TRY function file \n CASE ) ELSEIF CATCH CLEANUP UNTIL ELSE ]
+  constant -> .number #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  constant -> .string #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  matrix -> .[ ] #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  matrix -> .[ matrix_rows ] #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  number -> .NUMBER #lookaheads= ; , END_OF_INPUT < <= == >= > != ~= & | && || = += -= *= /= \\= ^= **= .*= ./= .\\= .^= .**= &= |= : .\\ \\ ./ / .* * .- - .+ + .** .^ ** ^ .' ' ( -- ++ END OTHERWISE NAME NUMBER STRING [ ! ~ GLOBAL PERSISTENT IF SWITCH WHILE DO FOR PARFOR BREAK CONTINUE RETURN UNWIND TRY function file \n CASE ) ELSEIF CATCH CLEANUP UNTIL ELSE ]
+  string -> .STRING #lookaheads= ; , END_OF_INPUT < <= == >= > != ~= & | && || = += -= *= /= \\= ^= **= .*= ./= .\\= .^= .**= &= |= : .\\ \\ ./ / .* * .- - .+ + .** .^ ** ^ .' ' ( -- ++ OTHERWISE CASE END ELSEIF ELSE CATCH CLEANUP UNTIL \n STRING NAME NUMBER [ ! ~ GLOBAL PERSISTENT IF SWITCH WHILE DO FOR PARFOR BREAK CONTINUE RETURN UNWIND TRY function file ) ]
+State 26
+  simple_expr -> oper_expr . #lookaheads= ; , END_OF_INPUT < <= == >= > != ~= & | && || = += -= *= /= \\= ^= **= .*= ./= .\\= .^= .**= &= |= ) ] END NAME NUMBER STRING [ ( ++ -- ! ~ + - GLOBAL PERSISTENT IF SWITCH WHILE DO FOR PARFOR BREAK CONTINUE RETURN UNWIND TRY function file \n ELSE OTHERWISE CASE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> oper_expr .++ #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> oper_expr .-- #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> oper_expr .( ) #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> oper_expr .( arg_list ) #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> oper_expr .' #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> oper_expr ..' #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> oper_expr .^ power_expr #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> oper_expr .** power_expr #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> oper_expr ..^ power_expr #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> oper_expr ..** power_expr #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> oper_expr .+ oper_expr #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> oper_expr ..+ oper_expr #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> oper_expr .- oper_expr #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> oper_expr ..- oper_expr #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> oper_expr .* oper_expr #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> oper_expr ..* oper_expr #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> oper_expr ./ oper_expr #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> oper_expr ../ oper_expr #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> oper_expr .\\ oper_expr #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  oper_expr -> oper_expr ..\\ oper_expr #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  colon_expr -> oper_expr .: oper_expr #lookaheads= END_OF_INPUT , ; |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] END CASE \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL - + ~ ! -- ++ ( [ STRING NUMBER NAME OTHERWISE ELSEIF CATCH CLEANUP UNTIL ELSE
+  colon_expr -> oper_expr .: oper_expr : oper_expr #lookaheads= END_OF_INPUT , ; |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] END CASE \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL - + ~ ! -- ++ ( [ STRING NUMBER NAME OTHERWISE ELSEIF CATCH CLEANUP UNTIL ELSE
+State 56
+  matrix -> [ .] #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  matrix -> [ .matrix_rows ] #lookaheads= END_OF_INPUT , ; ++ -- ( ' .' ^ ** .^ .** + .+ - .- * .* / ./ \\ .\\ : |= &= .**= .^= .\\= ./= .*= **= ^= \\= /= *= -= += = || && | & ~= != > >= == <= < ) ] \n file function TRY UNWIND RETURN CONTINUE BREAK PARFOR FOR DO WHILE SWITCH IF PERSISTENT GLOBAL ~ ! [ STRING NUMBER NAME END ELSE CASE OTHERWISE UNTIL CLEANUP CATCH ELSEIF
+  matrix_rows -> .matrix_row #lookaheads= ] ;
+  matrix_rows -> .matrix_rows ; matrix_row #lookaheads= ] ;
+  matrix_row -> . #lookaheads= ] ;
+  matrix_row -> ., #lookaheads= ] ;
+  matrix_row -> .arg_list #lookaheads= ] ;
+  matrix_row -> .arg_list , #lookaheads= ] ;
+  matrix_row -> ., arg_list #lookaheads= ] ;
+  matrix_row -> ., arg_list , #lookaheads= ] ;
+  arg_list -> .expression #lookaheads= ] , ; )
+  arg_list -> .magic_colon #lookaheads= ] , ; )
+  arg_list -> .magic_tilde #lookaheads= ] , ; )
+  arg_list -> .arg_list , magic_colon #lookaheads= ] , ; )
+  arg_list -> .arg_list , magic_tilde #lookaheads= ] , ; )
+  arg_list -> .arg_list , expression #lookaheads= ] , ; )
+  expression -> .simple_expr
+  expression -> .assign_expr
+  magic_colon -> .: #lookaheads= , ] ; )
+  magic_tilde -> .! #lookaheads= , ] ; )
+  magic_tilde -> .~ #lookaheads= , ] ; )
+  simple_expr -> .oper_expr
+  simple_expr -> .colon_expr
+  simple_expr -> .simple_expr < simple_expr
+  simple_expr -> .simple_expr <= simple_expr
+  simple_expr -> .simple_expr == simple_expr
+  simple_expr -> .simple_expr >= simple_expr
+  simple_expr -> .simple_expr > simple_expr
+  simple_expr -> .simple_expr != simple_expr
+  simple_expr -> .simple_expr ~= simple_expr
+  simple_expr -> .simple_expr & simple_expr
+  simple_expr -> .simple_expr | simple_expr
+  simple_expr -> .simple_expr && simple_expr
+  simple_expr -> .simple_expr || simple_expr
+  assign_expr -> .simple_expr = expression
+  assign_expr -> .simple_expr += expression
+  assign_expr -> .simple_expr -= expression
+  assign_expr -> .simple_expr *= expression
+  assign_expr -> .simple_expr /= expression
+  assign_expr -> .simple_expr \\= expression
+  assign_expr -> .simple_expr ^= expression
+  assign_expr -> .simple_expr **= expression
+  assign_expr -> .simple_expr .*= expression
+  assign_expr -> .simple_expr ./= expression
+  assign_expr -> .simple_expr .\\= expression
+  assign_expr -> .simple_expr .^= expression
+  assign_expr -> .simple_expr .**= expression
+  assign_expr -> .simple_expr &= expression
+  assign_expr -> .simple_expr |= expression
+  oper_expr -> .primary_expr
+  oper_expr -> .oper_expr ++
+  oper_expr -> .oper_expr --
+  oper_expr -> .oper_expr ( )
+  oper_expr -> .oper_expr ( arg_list )
+  oper_expr -> .oper_expr '
+  oper_expr -> .oper_expr .'
+  oper_expr -> .++ oper_expr
+  oper_expr -> .-- oper_expr
+  oper_expr -> .! oper_expr
+  oper_expr -> .~ oper_expr
+  oper_expr -> .+ oper_expr
+  oper_expr -> .- oper_expr
+  oper_expr -> .oper_expr ^ power_expr
+  oper_expr -> .oper_expr ** power_expr
+  oper_expr -> .oper_expr .^ power_expr
+  oper_expr -> .oper_expr .** power_expr
+  oper_expr -> .oper_expr + oper_expr
+  oper_expr -> .oper_expr .+ oper_expr
+  oper_expr -> .oper_expr - oper_expr
+  oper_expr -> .oper_expr .- oper_expr
+  oper_expr -> .oper_expr * oper_expr
+  oper_expr -> .oper_expr .* oper_expr
+  oper_expr -> .oper_expr / oper_expr
+  oper_expr -> .oper_expr ./ oper_expr
+  oper_expr -> .oper_expr \\ oper_expr
+  oper_expr -> .oper_expr .\\ oper_expr
+  colon_expr -> .oper_expr : oper_expr
+  colon_expr -> .oper_expr : oper_expr : oper_expr
+  primary_expr -> .identifier
+  primary_expr -> .constant
+  primary_expr -> .matrix
+  primary_expr -> .( expression )
+  identifier -> .NAME
+  constant -> .number
+  constant -> .string
+  matrix -> .[ ]
+  matrix -> .[ matrix_rows ]
+  number -> .NUMBER
+  string -> .STRING
